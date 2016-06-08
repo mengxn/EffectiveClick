@@ -22,6 +22,7 @@ public abstract class OnEffectiveClickListener implements View.OnClickListener{
             switch (msg.what) {
                 case WHAT_CLICK:
                     onEffectiveClick((View) msg.obj);
+                    lastClickTime = System.currentTimeMillis();
                     break;
             }
         }
