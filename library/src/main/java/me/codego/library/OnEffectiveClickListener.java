@@ -10,10 +10,12 @@ import android.view.View;
  */
 public abstract class OnEffectiveClickListener implements View.OnClickListener{
 
-    private int effectiveTime = 300;//default 300ms
+    private int effectiveTime = DEFAULT_EFFECTIVE_TIME;
     private long lastClickTime;
 
     private final int WHAT_CLICK = 1;
+
+    private static final int DEFAULT_EFFECTIVE_TIME = 300;//default 300ms
 
     private Handler handler = new Handler(){
         @Override
@@ -32,10 +34,8 @@ public abstract class OnEffectiveClickListener implements View.OnClickListener{
     }
 
     public OnEffectiveClickListener(int effectiveTime) {
-        //must >300
-        if (effectiveTime > 300) {
-            this.effectiveTime = effectiveTime;
-        }
+        //must > 300ms
+        this.effectiveTime = Math.max(DEFAULT_EFFECTIVE_TIME, effectiveTime);
     }
 
     @Override
