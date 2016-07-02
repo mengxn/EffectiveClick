@@ -12,6 +12,7 @@ public abstract class OnEffectiveClickListener implements View.OnClickListener{
 
     private int effectiveTime = DEFAULT_EFFECTIVE_TIME;
     private long lastClickTime;
+    private int clickCount;
 
     private final int WHAT_CLICK = 1;
 
@@ -23,7 +24,7 @@ public abstract class OnEffectiveClickListener implements View.OnClickListener{
             super.handleMessage(msg);
             switch (msg.what) {
                 case WHAT_CLICK:
-                    onEffectiveClick((View) msg.obj);
+                    callbackEffectiveClick((View) msg.obj);
                     lastClickTime = System.currentTimeMillis();
                     break;
             }
@@ -42,14 +43,24 @@ public abstract class OnEffectiveClickListener implements View.OnClickListener{
     public void onClick(View view) {
         long currentTimeMillis = System.currentTimeMillis();
         if (currentTimeMillis - lastClickTime > effectiveTime) {
-            onEffectiveClick(view);
+            callbackEffectiveClick(view);
         } else {
+            clickCount ++;
             handler.removeMessages(WHAT_CLICK);
             handler.sendMessageDelayed(handler.obtainMessage(WHAT_CLICK, view), effectiveTime);
         }
         lastClickTime = currentTimeMillis;
     }
 
+    private void callbackEffectiveClick(View view) {
+        onEffectiveClick(view);
+        onEffectiveCountClick(view, clickCount);
+        clickCount = 0;
+    }
 
     public abstract void onEffectiveClick(View view);
+
+    public void onEffectiveCountClick(View view, int count) {
+
+    }
 }
