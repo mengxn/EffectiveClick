@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import me.codego.library.OnEffectiveClickListener;
+import me.codego.view.OnEffectiveClickListener;
 
 /**
  *

@@ -1,4 +1,4 @@
-package me.codego.library;
+package me.codego.view;
 
 import android.os.Handler;
 import android.os.Message;
