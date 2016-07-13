@@ -1,8 +1,8 @@
 # EffectiveClick
-拦截快速点击事件
+## Example
 
 例：简单举例
-```java
+``` java
 testBtn.setOnClickListener(new OnEffectiveClickListener() {
                @Override
                public void onEffectiveClick(View view) {
@@ -11,7 +11,7 @@ testBtn.setOnClickListener(new OnEffectiveClickListener() {
            });
 ```
 例：拦截1s内多次点击
-```java
+``` java
 testBtn.setOnClickListener(new OnEffectiveClickListener(1000) {
                @Override
                public void onEffectiveClick(View view) {
@@ -20,7 +20,7 @@ testBtn.setOnClickListener(new OnEffectiveClickListener(1000) {
            });
 ```
 例：获取拦截点击数
-```java
+``` java
 testBtn.setOnClickListener(new OnEffectiveClickListener(1000) {
                @Override
                public void onEffectiveClick(View view) {
@@ -32,4 +32,18 @@ testBtn.setOnClickListener(new OnEffectiveClickListener(1000) {
                    //do something
                }
            });
+```
+## Usage
+### Gradle
+```
+compile 'me.codego.view:effective-click:1.0.2'
+```
+### Maven
+```
+<dependency>
+  <groupId>me.codego.view</groupId>
+  <artifactId>effective-click</artifactId>
+  <version>1.0.2</version>
+  <type>pom</type>
+</dependency>
 ```
